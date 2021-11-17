@@ -7,20 +7,10 @@ function TransactionWithdraw() {
   const [amount, setamount] = useState("");
   const [currentBalance, setcurrentBalance] = useState("");
   const [updatedBalance, setupdatedBalance] = useState("");
+  const [transpassword, settranspassword] = useState("");
+  const [checkPassword, setcheckPassword] = useState("");
   const [click, setclick] = useState(0);
-  /*const deposit = () => {
-    axios
-      .post("http://localhost:3001/profileInfo", {
-        username: localStorage.email,
-      })
-      .then((response) => {
-        console.log(response.data[0].currentbal);
-        setcurrentBalance(response.data[0].currentbal);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };*/
+
   useEffect(() => {
     axios
       .post("http://localhost:3001/profileInfo", {
@@ -34,8 +24,21 @@ function TransactionWithdraw() {
       .catch((error) => {
         console.log(error);
       });
+
+    axios
+      .post("http://localhost:3001/encryptPassword", {
+        email: localStorage.email,
+      })
+      .then((response) => {
+        console.log(response.data);
+        setcheckPassword(response.data);
+      });
   }, [amount]);
   const update = () => {
+    if (transpassword !== checkPassword) {
+      alert("Invalid password");
+      return;
+    }
     if (parseInt(amount) <= 0) {
       alert("Invalid amount");
       return;
@@ -340,6 +343,22 @@ function TransactionWithdraw() {
                     </select>
                   </div>
                 </div>
+
+                <div class="mt-5 relative rounded-md shadow-sm">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"></div>
+                  <input
+                    onChange={(e) => {
+                      settranspassword(e.target.value);
+                      //console.log(transpassword);
+                    }}
+                    type="password"
+                    name="price"
+                    id="price"
+                    class="focus:ring-indigo-500 focus:border-indigo-500 block w-full p-4 pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
+                    placeholder="Enter transaction password"
+                  />
+                </div>
+
                 <div className="justify-center content-center">
                   <button
                     onClick={update}
