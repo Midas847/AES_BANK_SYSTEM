@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +9,12 @@ function SignIn() {
   const [loginstate, setloginstate] = useState("");
   const [logged, setlogged] = useState(0);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios.post("http://localhost:3001/encryptPass").then((response) => {
+      console.log(response.data);
+    });
+  }, [username]);
 
   const login = () => {
     axios

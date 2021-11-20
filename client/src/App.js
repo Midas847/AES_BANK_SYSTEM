@@ -10,6 +10,7 @@ import "tailwindcss/tailwind.css";
 import Transaction from "./Transactions/Transaction";
 import TransactionWithdraw from "./Transactions/TransactionWithdraw";
 import TransactionSendMoney from "./Transactions/TransactionSendMoney";
+import Settings from "./Settings";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             element={<TransactionWithdraw />}
           />
           <Route path="/sendmoney" element={<TransactionSendMoney />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </Router>
     </>

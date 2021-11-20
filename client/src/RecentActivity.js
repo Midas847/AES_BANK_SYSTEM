@@ -8,7 +8,6 @@ const RecentActivity = () => {
       .get("http://localhost:3001/receiveMessages")
       .then((response) => {
         console.log(response.data);
-        //console.log(new Date().toLocaleTimeString());
         setstate(response.data);
       })
       .catch((error) => {
@@ -62,42 +61,6 @@ const RecentActivity = () => {
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
                 {state.map((st) => {
-                  /*return (
-                    <tr>
-                      <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="flex items-center">
-                          <div class="ml-4">
-                            <div class="text-sm font-medium text-gray-900">
-                              {st.TransactionUsername}
-                            </div>
-                            <div class="text-sm text-gray-500">
-                              {st.TransactionEmail}
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">{st.Amount}</div>
-                      </td>
-                      <td class="px-6 py-4 whitespace-nowrap">
-                        {st.Status === "deposited" ? (
-                          <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                            {st.Status}
-                          </span>
-                        ) : (
-                          <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                            {st.Status}
-                          </span>
-                        )}
-                      </td>
-                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {st.Date}
-                      </td>
-                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {st.Time}
-                      </td>
-                    </tr>
-                  );*/
                   return localStorage.username === st.TransactionUsername ? (
                     <tr>
                       <td class="px-6 py-4 whitespace-nowrap">

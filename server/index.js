@@ -221,6 +221,27 @@ app.get("/receiveMessages", (req, res) => {
   });
 });
 
+app.post("/getCurrentBalance", (req, res) => {
+  const username = req.body.username;
+  db.query(
+    "SELECT currentbal FROM users WHERE username = ?",
+    [username],
+    (err, result) => {
+      res.send(result);
+    }
+  );
+});
+
+app.post("/changeTransactionPassword", (req, res) => {
+  const password = encrypt(req.body.password);
+  const username = req.body.username;
+  console.log(password.password);
+  db.query(
+    "UPDATE users SET TransactionPassword = ?,TransactionPasswordIv = ? WHERE username = ?",
+    [password.password, password.iv, username]
+  );
+});
+
 app.listen(3001, () => {
   console.log("running server");
 });

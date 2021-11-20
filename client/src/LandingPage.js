@@ -7,6 +7,7 @@ function LandingPage() {
   const [search, setsearch] = useState("");
   var todayDate = new Date().toISOString().slice(0, 10);
   console.log(todayDate);
+  const [currentBalance, setcurrentBalance] = useState("");
 
   const navigate = useNavigate();
   const logout = () => {
@@ -15,15 +16,23 @@ function LandingPage() {
     navigate("/signin");
   };
 
+  /*setTimeout(function () {
+    navigate("/signin");
+  }, 900000);
+  */
   /*To make it responsive*/
   const toggleNav = () => {};
 
-  /*return (
-    <div class="md:container md:mx-auto">
-      <h1>Welcome</h1>
-      <button onClick={logout}>Log out</button>
-    </div>
-  );*/
+  useEffect(() => {
+    axios
+      .post("http://localhost:3001/getCurrentBalance", {
+        username: localStorage.email,
+      })
+      .then((response) => {
+        //console.log(response.data[0].currentbal);
+        setcurrentBalance(response.data[0].currentbal);
+      });
+  }, []);
 
   return (
     <div class="relative min-h-screen md:flex">
@@ -109,7 +118,9 @@ function LandingPage() {
             <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-white-400">
               <i class="fas fa-cog"></i>
             </span>
-            <span class="text-sm font-medium">Settings</span>
+            <Link to="/settings">
+              <span class="text-sm font-medium">Settings</span>
+            </Link>
           </a>
           <a
             href="#"
@@ -200,13 +211,16 @@ function LandingPage() {
 
             <div class="h-50 grid grid-rows-1 grid-flow-col gap-6 mt-3">
               <div className="bg-white h-20 rounded-lg border-2 border-light-blue-500 border-opacity-300">
-                1
+                <i className="fas fa-balance-scale ml-3 mt-5"></i>
+                <span className="pl-8 text-gray-600">
+                  Current Balance : ${currentBalance}
+                </span>
               </div>
               <div className="bg-white h-20 rounded-lg border-2 border-light-blue-500 border-opacity-300">
-                2
-              </div>
-              <div className="bg-white h-20 rounded-lg border-2 border-light-blue-500 border-opacity-300">
-                3
+                <i className="fas fa-balance-scale ml-3 mt-5"></i>
+                <span className="pl-8 text-gray-600">
+                  Current Balance : ${currentBalance}
+                </span>
               </div>
             </div>
           </div>
