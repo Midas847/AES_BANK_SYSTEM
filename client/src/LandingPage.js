@@ -163,9 +163,9 @@ function LandingPage() {
         <div class="bg-gray-50 -mt-8">
           <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
             <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              <span class="block">Good Morning</span>
+              <span class="block">Good Morning,</span>
               <span class="block text-indigo-600">
-                {localStorage.username}.
+                {localStorage.firstname}.
               </span>
             </h2>
             <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
@@ -213,13 +213,13 @@ function LandingPage() {
               <div className="bg-white h-20 rounded-lg border-2 border-light-blue-500 border-opacity-300">
                 <i className="fas fa-balance-scale ml-3 mt-5"></i>
                 <span className="pl-8 text-gray-600">
-                  Current Balance : ${currentBalance}
+                  Current Balance : ₹{currentBalance}
                 </span>
               </div>
               <div className="bg-white h-20 rounded-lg border-2 border-light-blue-500 border-opacity-300">
                 <i className="fas fa-balance-scale ml-3 mt-5"></i>
                 <span className="pl-8 text-gray-600">
-                  Current Balance : ${currentBalance}
+                  Current Balance : ₹{currentBalance}
                 </span>
               </div>
             </div>

@@ -33,6 +33,7 @@ function SignIn() {
           console.log(1);
           localStorage.setItem("email", response.data[0].username);
           localStorage.setItem("username", response.data[0].name);
+          localStorage.setItem("firstname", response.data[0].firstname);
           localStorage.setItem("password", "");
           navigate("/");
         }

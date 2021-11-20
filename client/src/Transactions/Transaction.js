@@ -42,6 +42,8 @@ function Transaction() {
   }, [amount]);
   const update = () => {
     if (transpassword !== checkPassword) {
+      console.log(checkPassword);
+      console.log(transpassword);
       setpayment(0);
       setclick(1);
       return;
