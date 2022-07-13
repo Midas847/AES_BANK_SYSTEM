@@ -26,7 +26,7 @@
 
 ![image](https://user-images.githubusercontent.com/44649707/178727779-10bb8b17-72fd-4320-9833-4c382220d695.png)
 
-### Tools and Languages: 
+<!-- ### Tools and Languages:  -->
 
 ## Instructions
 
